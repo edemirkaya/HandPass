@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HandPass.WebUI</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../../theme/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="../../theme/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HandPass.WebUI.styles.css" asp-append-version="true" />
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" id="closeSearch" href="#" role="button">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" id="searchPass" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                        <a href='@Url.ActionLink("Detail","User")' class="nav-link">
+                            <i class="far fa-user nav-icon"></i>
+                            <p>User Info</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='@Url.ActionLink("Index","UserPass")' class="nav-link">
+                            <i class="far fa-key nav-icon"></i>
+                            <p>Passwords</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='@Url.ActionLink("Create","Category")' class="nav-link">
+                            <i class="far fa-key nav-icon"></i>
+                            <p>Create Category</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>...</b>
+        </div>
+    </footer>
+
+    <script src="../../theme/plugins/jquery/jquery.min.js"></script>
+    <script src="../../theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../theme/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="../../theme/dist/js/adminlte.min.js"></script>
+    <script src="../../theme/dist/js/demo.js"></script>
+</body>
+</html>

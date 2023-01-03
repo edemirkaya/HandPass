@@ -20,6 +20,7 @@ namespace HandPass.DataAccess
         public DbSet<User> Users{ get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<UserPassword> UserPasswords { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }

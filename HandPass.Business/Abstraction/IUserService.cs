@@ -8,5 +8,6 @@ namespace HandPass.Business.Abstraction
         IDataResult<List<OperationClaim>> GetClaims(User user);
         void Add(User user);
         IDataResult<User> GetByUserName(string userName);
+        IDataResult<User> GetByCacheUserName();
     }
 }

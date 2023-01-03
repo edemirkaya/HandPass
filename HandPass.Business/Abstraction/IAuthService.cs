@@ -9,7 +9,7 @@ namespace HandPass.Business.Abstraction
     {
         IDataResult<User> Register(UserForRegisterDto userForRegisterDto);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
-        IResult UserExists(string email);
+        IResult UserExists(string userName);
         IDataResult<AccessToken> CreateAccessToken(User user);
     }
 }

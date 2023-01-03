@@ -103,6 +103,24 @@ namespace HandPass.DataAccess.Migrations
                     b.ToTable("UserOperationClaims", (string)null);
                 });
 
+            modelBuilder.Entity("HandPass.Entities.Entitiy.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories", (string)null);
+                });
+
             modelBuilder.Entity("HandPass.Entities.Entitiy.UserPassword", b =>
                 {
                     b.Property<int>("Id")
@@ -114,8 +132,9 @@ namespace HandPass.DataAccess.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PassCategory")
-                        .HasColumnType("int");
+                    b.Property<string>("PassCategory")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PassDefinition")
                         .IsRequired()
@@ -144,20 +163,7 @@ namespace HandPass.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("UserPasswords", (string)null);
-                });
-
-            modelBuilder.Entity("HandPass.Entities.Entitiy.UserPassword", b =>
-                {
-                    b.HasOne("HandPass.Core.CoreEntities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

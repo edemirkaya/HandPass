@@ -7,11 +7,9 @@ namespace HandPass.Entities.Entitiy
     {
         public string PassDefinition { get; set; }
         public string Url { get; set; }
-        public int PassCategory { get; set; }
+        public string PassCategory { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public int UserId { get; set; }
-
-        public User User { get; set; }
     }
 }

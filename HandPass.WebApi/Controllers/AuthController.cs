@@ -1,5 +1,6 @@
 ﻿using HandPass.Business.Abstraction;
 using HandPass.Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HandPass.WebApi.Controllers
@@ -15,7 +16,7 @@ namespace HandPass.WebApi.Controllers
             _authService = authService;
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public ActionResult Login(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
@@ -27,13 +28,13 @@ namespace HandPass.WebApi.Controllers
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(result.Message);
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {
             var userExists = _authService.UserExists(userForRegisterDto.UserName);
@@ -46,7 +47,7 @@ namespace HandPass.WebApi.Controllers
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(result.Message);

@@ -1,0 +1,69 @@
+﻿@using HandPass.Entities.Dto;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@model UserForLoginDto
+
+<div class="login-box">
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <div class="input-group mb-3">
+                <input asp-for="@Model.UserName" id="UserName" type="text" class="form-control" placeholder="User Name">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="@Model.Password" id="Password" type="password" class="form-control" placeholder="Password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+            </div>
+            <p class="mb-0">
+                <a href="@Url.ActionLink("Register","Authentication")" class="text-center">Register a new membership</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $("#btnSubmit").click(function () {
+        $("#loading").show();
+        var model = {
+            UserName: $("#UserName").val(),
+            Password: $("#Password").val()
+        };
+        $.ajax({
+            url: '@Url.Action("Login","Authentication")',
+            type: 'POST',
+            dataType: 'json',
+            data: model,
+            success: function (data) {
+                var tokenModel = {
+                    token: "Bearer " + data.token,
+                    expDate: data.expiration
+                }
+                localStorage.setItem("Token", JSON.stringify(tokenModel));
+                window.location.href = '@Url.Action("Index", "UserPass")';
+                $("#loading").hide();
+            },
+            error: function (err) {
+                $("#loading").hide();
+            }
+        });
+    });
+</script>

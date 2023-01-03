@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="card">
+    <div class="card-body register-card-body">
+        <p class="login-box-msg">Register a new membership</p>
+
+        <div class="input-group mb-3">
+            <input id="FirstName" type="text" class="form-control" placeholder="First Name">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="LastName" type="text" class="form-control" placeholder="Last Name">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="UserName" type="text" class="form-control" placeholder="User Name">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="Password" type="password" class="form-control" placeholder="Password">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <button type="submit" id="btnSubmit" class="btn btn-primary btn-block">Register</button>
+        </div>
+    </div>
+    <a href="@Url.Action("Login","Authentication")" class="text-center">I already have a membership</a>
+</div>
+
+<script type="text/javascript">
+    $("#btnSubmit").click(function () {
+        $("#loading").show();
+        var model = {
+            FirstName: $("#FirstName").val(),
+            LastName: $("#LastName").val(),
+            UserName: $("#UserName").val(),
+            Password: $("#Password").val()
+        };
+        $.ajax({
+            url: '@Url.Action("Register","Authentication")',
+            type: 'POST',
+            dataType: 'json',
+            data: model,
+            success: function (data) {
+                var tokenModel = {
+                    token: "Bearer " + data.token,
+                    expDate: data.expiration
+                }
+                localStorage.setItem("Token", JSON.stringify(tokenModel));
+                window.location.href = '@Url.Action("Login", "Authentication")';
+                $("#loading").hide();
+            },
+            error: function (err) {
+                $("#loading").hide();
+            }
+        });
+    });
+</script>

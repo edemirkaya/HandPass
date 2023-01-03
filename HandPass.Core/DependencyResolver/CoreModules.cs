@@ -3,7 +3,6 @@ using HandPass.Core.Abstraction.Utility;
 using HandPass.Core.Aspects.Caching.Microsoft;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System.Diagnostics;
 
 namespace HandPass.Core.DependencyResolver
 {

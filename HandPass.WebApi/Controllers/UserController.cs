@@ -19,5 +19,15 @@ namespace HandPass.WebApi.Controllers
             _userService.Add(user);
             return user;
         }
+
+        [HttpGet("GetByUserName")]
+        public User GetByUserName(string userName) { 
+        return _userService.GetByUserName(userName).Data;
+        }   
+        
+        [HttpGet("GetByCacheUserName")]
+        public User GetByCacheUserName() { 
+        return _userService.GetByCacheUserName().Data;
+        }   
     }
 }

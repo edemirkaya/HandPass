@@ -16,7 +16,7 @@ namespace HandPass.Core.Utilities.Security.Jwt
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            _tokenOptions = Configuration.GetSection("TokenOptions") as TokenOptions;
+            _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
         {
@@ -51,6 +51,7 @@ namespace HandPass.Core.Utilities.Security.Jwt
         private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
+            claims.AddUserName(user.UserName);
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddName($"{user.FirstName} {user.LastName}");
             claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());

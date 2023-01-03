@@ -5,9 +5,9 @@ namespace HandPass.Core.Extentions
 {
     public static class ClaimExtensions
     {
-        public static void AddEmail(this ICollection<Claim> claims, string email)
+        public static void AddUserName(this ICollection<Claim> claims, string userName)
         {
-            claims.Add(new Claim(JwtRegisteredClaimNames.Email, email));
+            claims.Add(new Claim(ClaimTypes.UserData, userName));
         }
 
         public static void AddName(this ICollection<Claim> claims, string name)

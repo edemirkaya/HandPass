@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandPass.Business", "HandPass.Business\HandPass.Business.csproj", "{CF46D6E2-096F-4066-B786-C5FE5A546C97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandPass.Business", "HandPass.Business\HandPass.Business.csproj", "{CF46D6E2-096F-4066-B786-C5FE5A546C97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandPass.DataAccess", "HandPass.DataAccess\HandPass.DataAccess.csproj", "{8D6460D2-4173-4D02-99C1-60BBA56DE55C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandPass.DataAccess", "HandPass.DataAccess\HandPass.DataAccess.csproj", "{8D6460D2-4173-4D02-99C1-60BBA56DE55C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandPass.Entities", "HandPass.Entity\HandPass.Entities.csproj", "{32F9A141-E7AD-48FE-8CEF-D014E891BEA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandPass.Entities", "HandPass.Entity\HandPass.Entities.csproj", "{32F9A141-E7AD-48FE-8CEF-D014E891BEA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandPass.Core", "HandPass.Core\HandPass.Core.csproj", "{11A16ADA-057E-466B-897D-72B9094A3FFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandPass.Core", "HandPass.Core\HandPass.Core.csproj", "{11A16ADA-057E-466B-897D-72B9094A3FFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandPass.WebApi", "HandPass.WebApi\HandPass.WebApi.csproj", "{B111D133-6C5C-4F55-B566-1E0FEFBEBDEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandPass.WebApi", "HandPass.WebApi\HandPass.WebApi.csproj", "{B111D133-6C5C-4F55-B566-1E0FEFBEBDEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandPass.WebUI", "HandPass.WebUI\HandPass.WebUI.csproj", "{0ACA1AC1-7EDB-44B6-884A-2562E7D9E22A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B111D133-6C5C-4F55-B566-1E0FEFBEBDEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B111D133-6C5C-4F55-B566-1E0FEFBEBDEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B111D133-6C5C-4F55-B566-1E0FEFBEBDEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ACA1AC1-7EDB-44B6-884A-2562E7D9E22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACA1AC1-7EDB-44B6-884A-2562E7D9E22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACA1AC1-7EDB-44B6-884A-2562E7D9E22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACA1AC1-7EDB-44B6-884A-2562E7D9E22A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

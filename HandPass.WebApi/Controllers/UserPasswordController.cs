@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HandPass.Business.Abstraction;
+using HandPass.Entities.Dto;
+using HandPass.Entities.Entitiy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace HandPass.WebApi.Controllers
 {
@@ -6,18 +10,28 @@ namespace HandPass.WebApi.Controllers
     [Route("api/[controller]")]
     public class UserPasswordController : ControllerBase
     {
-        private readonly ILogger<UserPasswordController> _logger;
+        private IUserPasswordService _service;
 
-        public UserPasswordController(ILogger<UserPasswordController> logger)
+        public UserPasswordController(IUserPasswordService service)
         {
-            _logger = logger;
+            _service = service;
         }
 
-
-        [HttpGet]
-        public string Get()
+        [HttpGet("GetUserAllPasswords")]
+        public ActionResult GetUserAllPasswords()
         {
-            return "Merhaba";
+            var result = _service.GetUserAllPasswords();
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+                return Ok(result);
+        }
+        
+        [HttpPost("NewUserPassword")]
+        public void NewUserPassword(UserPassword model)
+        {
+            _service.Add(model);
         }
     }
 }

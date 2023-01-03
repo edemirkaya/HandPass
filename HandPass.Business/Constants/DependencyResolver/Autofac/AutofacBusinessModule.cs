@@ -15,13 +15,19 @@ namespace HandPass.Business.Constants.DependencyResolver.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-            builder.RegisterType<UserDal>().As<IUserDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<UserDal>().As<IUserDal>();
 
-            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+            builder.RegisterType<UserPasswordManager>().As<IUserPasswordService>();
+            builder.RegisterType<UserPasswordDal>().As<IUserPasswordDal>();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>();
+            builder.RegisterType<CategoryDal>().As<ICategoryDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
-            builder.RegisterType<UserBusinessRules>().As<IUserBusinessRules>().SingleInstance();
+            builder.RegisterType<UserBusinessRules>().As<IUserBusinessRules>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
